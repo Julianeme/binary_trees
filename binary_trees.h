@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stddef.h>
 
 /**
  * struct binary_tree_s - Binary tree node
@@ -34,5 +35,6 @@ void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int));
 size_t binary_tree_height(const binary_tree_t *tree);
 size_t max(size_t val_1, size_t val_2);
 void print_num(int n);
+void binary_tree_print(const binary_tree_t *);
 
 #endif
