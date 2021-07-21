@@ -9,12 +9,13 @@
 int findADepth(const binary_tree_t *tree)
 {
 	int d = 0;
+
 	while (tree != NULL)
 	{
 		d++;
 		tree = tree->left;
 	}
-	return d;
+	return (d);
 }
 
 /**
@@ -26,24 +27,26 @@ int findADepth(const binary_tree_t *tree)
  * Return: 1 if tree is perfect or 0 otherwise
  */
 
-int isPerfectRec(const binary_tree_t *tree, int d, int level=0)
+int isPerfectRec(const binary_tree_t *tree, int d, int level)
 {
 	if (tree == NULL)
 		return (0);
 
 	/*Cheking if all deeps are the same*/
 	if (tree->left == NULL && tree->right == NULL)
-		if (d == level+1)
-			return(1);
-		return(0);
+	{
+		if (d == level + 1)
+			return (1);
+		return (0);
+	}
 
 	/*Checking it node is internal and not perfect*/
 	if (tree->left == NULL || tree->right == NULL)
-		return 0;
+		return (0);
 
 	/*Checking if left and right are pefect*/
-	return isPerfectRec(tree->left, d, level+1) &&
-		isPerfectRec(tree->right, d, level+1);
+	return (isPerfectRec(tree->left, d, level + 1) &&
+		isPerfectRec(tree->right, d, level + 1));
 }
 
 /**
@@ -54,6 +57,8 @@ int isPerfectRec(const binary_tree_t *tree, int d, int level=0)
 
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
+	int level = 0;
 	int d = findADepth(tree);
-	return isPerfectRec(tree, d);
+
+	return (isPerfectRec(tree, d, level));
 }
